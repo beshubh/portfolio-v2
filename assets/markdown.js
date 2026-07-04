@@ -26,7 +26,11 @@ export function parseDocument(source) {
 function inline(value) {
   let output = escapeHtml(value);
   output = output.replace(/`([^`]+)`/g, "<code>$1</code>");
+  output = output.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) =>
+    `<img src="${src}" alt="${alt}" loading="lazy">`,
+  );
   output = output.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  output = output.replace(/~~([^~]+)~~/g, "<s>$1</s>");
   output = output.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   output = output.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
     const external = /^https?:\/\//.test(href);
@@ -103,6 +107,12 @@ function markdownToHtml(source) {
     if (!line.trim()) {
       flushParagraph();
       flushList();
+      continue;
+    }
+    if (/^ {0,3}([-*_])(?:\s*\1){2,}\s*$/.test(line)) {
+      flushParagraph();
+      flushList();
+      html.push("<hr>");
       continue;
     }
     const heading = line.match(/^(#{1,3})\s+(.+)$/);

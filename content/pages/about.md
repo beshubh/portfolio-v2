@@ -52,7 +52,7 @@ Three rounds later, I joined as a software engineer.
 
 - I solved a **Gunicorn** scaling problem in our **Django** HTTP servers, allowing us to scale them much further.
 - I introduced **PgBouncer** across multiple applications, cutting PostgreSQL CPU usage from **90%** to **40%** and connections from **5k** to **3k**.
-- I fixed a multi-year **Celery** and **RabbitMQ** problem that caused workers to hang at peak hours, taking down HTTP servers and requiring manual recovery. I wrote about it [here](./writings/celery.md).
+- I fixed a multi-year **Celery** and **RabbitMQ** problem that caused workers to hang at peak hours, taking down HTTP servers and requiring manual recovery. I wrote about it [here](./?post=you-might-be-unaware-of-celerys-delayed-semantics).
 - I built a link-shortening service that tracked **50%** of annual broadcast revenue across ~**1M+** unique links per day.
 - I brought backend unit-test coverage to **100%**, reducing the time needed to test new features, **eliminating** feature-change regressions, and making testing a company-wide practice.
 
@@ -68,12 +68,12 @@ Three rounds later, I joined as a software engineer.
 
 - I designed **ModelNexus**, a model-agnostic LLM and agent library that did not see adoption at LimeChat—a product nobody wanted, maybe? It was a good lesson.
 - I architected LimeChat's Voice Agents platform, creating an entirely new product for the company. It let clients handle calls with AI agents, contributed over **$600K** in revenue, and brought in ~**10** large enterprise deals.
-- I built a novel audio bridge between WhatsApp and LiveKit that made it possible to handle WhatsApp calls with AI agents. We built it before anyone else in India—and even before LiveKit itself—making LimeChat the first company in India to offer this capability. I wrote about it [here](../writings/audio-bridge.md).
+- I built a novel audio bridge between WhatsApp and LiveKit that made it possible to handle WhatsApp calls with AI agents. We built it before anyone else in India—and even before LiveKit itself—making LimeChat the first company in India to offer this capability. I wrote about it [here](./?post=story-of-how-we-built-voice-agents-at-limechat).
   - I ported the Python prototype to **Rust**, cutting CPU usage by 80% and significantly reducing hosting costs.
 - I led a company-wide reliability initiative that made critical infrastructure self-protecting under overload:
   - added circuit breakers across Kafka, RabbitMQ, Redis, DB-backed caches, and databases to contain failures before they cascaded.
   - designed automatic fallback queue paths that rerouted work when primary queues were overwhelmed.
   - archived old transactional data to S3 and added system-wide CPU, memory, and bandwidth alerts.
   - eliminated queue-overload outages and prevented runaway workloads from overwhelming databases.
-  - I wrote about the design [here](TODO_URL).
+  - I wrote about the design [here](./?post=improving-resilience-at-limechat).
 - I worked with the Agents Studio team to cut peak chat-agent latency by 60%, from 15s to 6s, by introducing semantic caching and removing high-fanout database reads.

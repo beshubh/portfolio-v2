@@ -153,6 +153,8 @@ blockquote { margin: 36px 0; padding-left: 22px; border-left: 2px solid var(--ac
 blockquote p { margin: 0; }
 code { font: 0.9em "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--heading); }
 pre { overflow-x: auto; margin: 32px 0; padding: 20px; background: #151515; border: 1px solid var(--line); border-radius: 4px; }
+.article img { display: block; max-width: 100%; height: auto; margin: 32px auto; border-radius: 4px; }
+.article hr { margin: 44px 0; border: 0; border-top: 1px solid var(--line); }
 
 .content p a,
 .content li a {
