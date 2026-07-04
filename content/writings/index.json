@@ -1,9 +1,9 @@
 [
   {
-    "slug": "learning-to-build-a-search-engine",
-    "title": "Learning to Build a Search Engine",
-    "date": "2026-06-13",
-    "summary": "What crawling, indexing, merging, and phrase search taught me about information retrieval.",
+    "slug": "building-search-engine-from-scratch-using-rust",
+    "title": "Building search engine from scratch using Rust",
+    "date": "2026-06-27",
+    "summary": "Search has one of the simplest interfaces in software: type text and press enter.",
     "tags": [
       "search",
       "systems",
@@ -12,13 +12,38 @@
     "status": "published"
   },
   {
-    "slug": "reliability-is-a-design-decision",
-    "title": "Reliability Is a Design Decision",
-    "date": "2026-05-24",
-    "summary": "Lessons from queues, fallbacks, and production systems that cannot assume dependencies stay healthy.",
+    "slug": "improving-resilience-at-limechat",
+    "title": "Improving resilience at LimeChat",
+    "date": "2026-06-01",
+    "summary": "fallbacks for everything.",
     "tags": [
       "reliability",
+      "distributed-systems",
+      "celery"
+    ],
+    "status": "published"
+  },
+  {
+    "slug": "you-might-be-unaware-of-celerys-delayed-semantics",
+    "title": "You might be unaware of celery's delayed semantics.",
+    "date": "2026-05-29",
+    "summary": "You might be unaware of celery's delayed semantics.",
+    "tags": [
+      "celery",
+      "python",
       "distributed-systems"
+    ],
+    "status": "published"
+  },
+  {
+    "slug": "story-of-how-we-built-voice-agents-at-limechat",
+    "title": "Story of how we built Voice Agents at LimeChat",
+    "date": "2026-05-11",
+    "summary": "This post is a technical deep dive into how we built WhatsApp voice agents at LimeChat.",
+    "tags": [
+      "webrtc",
+      "voice-ai",
+      "rust"
     ],
     "status": "published"
   }
