@@ -22,7 +22,13 @@ status: published
 ---
 ```
 
-Push the Markdown change to `main`. The included GitHub Actions workflow builds the writing index and deploys the site, so generated files do not need to be committed.
+Commit and push the Markdown change to `main`, then publish the generated site with:
+
+```sh
+npm run deploy
+```
+
+The deploy command builds the writing index and pushes only the generated site to the `gh-pages` branch. Generated files do not need to be committed to `main`.
 
 ## Run locally
 
@@ -32,6 +38,6 @@ npm run dev
 
 Open `http://localhost:4173`. Use `npm run build` to generate the deployable `dist/` directory without starting a server.
 
-## GitHub Pages setup
+## GitHub Pages
 
-In the repository settings, open **Pages** and select **GitHub Actions** as the source. The workflow supports both user sites and repository subpaths because all asset and content URLs are relative.
+Pages is served from the root of the `gh-pages` branch. The site supports both user sites and repository subpaths because all asset and content URLs are relative.
