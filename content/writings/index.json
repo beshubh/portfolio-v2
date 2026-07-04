@@ -1,0 +1,25 @@
+[
+  {
+    "slug": "learning-to-build-a-search-engine",
+    "title": "Learning to Build a Search Engine",
+    "date": "2026-06-13",
+    "summary": "What crawling, indexing, merging, and phrase search taught me about information retrieval.",
+    "tags": [
+      "search",
+      "systems",
+      "rust"
+    ],
+    "status": "published"
+  },
+  {
+    "slug": "reliability-is-a-design-decision",
+    "title": "Reliability Is a Design Decision",
+    "date": "2026-05-24",
+    "summary": "Lessons from queues, fallbacks, and production systems that cannot assume dependencies stay healthy.",
+    "tags": [
+      "reliability",
+      "distributed-systems"
+    ],
+    "status": "published"
+  }
+]
