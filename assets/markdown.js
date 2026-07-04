@@ -39,7 +39,7 @@ function markdownToHtml(source) {
   const lines = source.replaceAll("\r\n", "\n").split("\n");
   const html = [];
   let paragraph = [];
-  let list = null;
+  let listItems = [];
   let code = null;
 
   const flushParagraph = () => {
@@ -47,8 +47,41 @@ function markdownToHtml(source) {
     paragraph = [];
   };
   const flushList = () => {
-    if (list) html.push(`<${list.type}>${list.items.map((item) => `<li>${inline(item)}</li>`).join("")}</${list.type}>`);
-    list = null;
+    if (!listItems.length) return;
+
+    const roots = [];
+    const stack = [];
+
+    for (const token of listItems) {
+      while (stack.length && token.indent < stack.at(-1).indent) stack.pop();
+
+      let list = stack.at(-1);
+      if (!list || token.indent > list.indent) {
+        const nested = { type: token.type, indent: token.indent, items: [] };
+        if (list?.items.length) list.items.at(-1).children.push(nested);
+        else roots.push(nested);
+        stack.push(nested);
+        list = nested;
+      } else if (token.type !== list.type) {
+        stack.pop();
+        const parent = stack.at(-1);
+        const sibling = { type: token.type, indent: token.indent, items: [] };
+        if (parent?.items.length) parent.items.at(-1).children.push(sibling);
+        else roots.push(sibling);
+        stack.push(sibling);
+        list = sibling;
+      }
+
+      list.items.push({ text: token.text, children: [] });
+    }
+
+    const renderList = (list) =>
+      `<${list.type}>${list.items
+        .map((item) => `<li>${inline(item.text)}${item.children.map(renderList).join("")}</li>`)
+        .join("")}</${list.type}>`;
+
+    html.push(...roots.map(renderList));
+    listItems = [];
   };
 
   for (const line of lines) {
@@ -80,14 +113,12 @@ function markdownToHtml(source) {
       html.push(`<h${level}>${inline(heading[2])}</h${level}>`);
       continue;
     }
-    const unordered = line.match(/^[-*]\s+(.+)$/);
-    const ordered = line.match(/^\d+\.\s+(.+)$/);
-    if (unordered || ordered) {
+    const listItem = line.match(/^([ \t]*)([-*]|\d+\.)\s+(.+)$/);
+    if (listItem) {
       flushParagraph();
-      const type = unordered ? "ul" : "ol";
-      if (list && list.type !== type) flushList();
-      list ??= { type, items: [] };
-      list.items.push((unordered || ordered)[1]);
+      const indent = [...listItem[1]].reduce((width, character) => width + (character === "\t" ? 4 : 1), 0);
+      const type = listItem[2] === "-" || listItem[2] === "*" ? "ul" : "ol";
+      listItems.push({ indent, type, text: listItem[3] });
       continue;
     }
     const quote = line.match(/^>\s?(.+)$/);
@@ -97,6 +128,7 @@ function markdownToHtml(source) {
       html.push(`<blockquote><p>${inline(quote[1])}</p></blockquote>`);
       continue;
     }
+    flushList();
     paragraph.push(line.trim());
   }
 

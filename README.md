@@ -38,6 +38,8 @@ npm run dev
 
 Open `http://localhost:4173`. Use `npm run build` to generate the deployable `dist/` directory without starting a server.
 
+The development server watches Markdown, CSS, JavaScript, and the page shell. Saving a watched file rebuilds the static site and reloads connected browser tabs automatically. Set a different port with `PORT=3000 npm run dev`.
+
 ## GitHub Pages
 
 Pages is served from the root of the `gh-pages` branch. The site supports both user sites and repository subpaths because all asset and content URLs are relative.
