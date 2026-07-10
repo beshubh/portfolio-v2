@@ -9,10 +9,19 @@ export function externalHttpHref(href, currentHref = globalThis.location?.href) 
   }
 }
 
-export function openExternalUrl(href, open = globalThis.open?.bind(globalThis)) {
-  if (!open) return;
-  const childWindow = open(href, "_blank");
-  if (childWindow) childWindow.opener = null;
+export function openExternalUrl(
+  href,
+  open = globalThis.open?.bind(globalThis),
+  navigate = globalThis.location?.assign?.bind(globalThis.location),
+) {
+  const childWindow = open?.(href, "_blank");
+  if (childWindow) {
+    childWindow.opener = null;
+    return "opened";
+  }
+
+  navigate?.(href);
+  return "fallback";
 }
 
 export function handleExternalLinkClick(
@@ -20,6 +29,7 @@ export function handleExternalLinkClick(
   {
     currentHref = globalThis.location?.href,
     open = globalThis.open?.bind(globalThis),
+    navigate = globalThis.location?.assign?.bind(globalThis.location),
   } = {},
 ) {
   if (
@@ -37,6 +47,6 @@ export function handleExternalLinkClick(
   if (!href) return false;
 
   event.preventDefault();
-  openExternalUrl(href, open);
+  openExternalUrl(href, open, navigate);
   return true;
 }

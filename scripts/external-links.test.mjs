@@ -58,3 +58,40 @@ const handled = handleExternalLinkClick({
 assert.equal(handled, true);
 assert.equal(prevented, true);
 assert.deepEqual(calls.at(-1), ["https://sololearn.com/", "_blank"]);
+
+const fallbackNavigations = [];
+const blockedResult = openExternalUrl(
+  "https://sololearn.com/",
+  () => null,
+  (href) => fallbackNavigations.push(href),
+);
+
+assert.equal(blockedResult, "fallback");
+assert.deepEqual(fallbackNavigations, ["https://sololearn.com/"]);
+
+let blockedPrevented = false;
+const handlerFallbackNavigations = [];
+const blockedHandled = handleExternalLinkClick({
+  defaultPrevented: false,
+  button: 0,
+  metaKey: false,
+  ctrlKey: false,
+  shiftKey: false,
+  altKey: false,
+  target: {
+    closest() {
+      return { href: "https://sololearn.com" };
+    },
+  },
+  preventDefault() {
+    blockedPrevented = true;
+  },
+}, {
+  currentHref: "https://beshubh.github.io/?page=about",
+  open: () => null,
+  navigate: (href) => handlerFallbackNavigations.push(href),
+});
+
+assert.equal(blockedHandled, true);
+assert.equal(blockedPrevented, true);
+assert.deepEqual(handlerFallbackNavigations, ["https://sololearn.com/"]);
