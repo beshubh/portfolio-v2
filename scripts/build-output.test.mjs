@@ -31,3 +31,7 @@ await Promise.all([
 const builtHtml = await readFile(path.join(root, "dist", "index.html"), "utf8");
 assert.match(builtHtml, /<div id="root"><\/div>/);
 assert.doesNotMatch(builtHtml, /src\/main\.jsx/);
+
+const builtAdminHtml = await readFile(path.join(root, "dist", "admin", "index.html"), "utf8");
+assert.match(builtAdminHtml, /<div id="admin-root"><\/div>/);
+assert.doesNotMatch(builtAdminHtml, /src\/admin\/main\.jsx/);

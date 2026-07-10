@@ -53,6 +53,7 @@ const defaultSite = {
   name: "Shubham Kumar",
   email: "bshubh@proton.me",
   github: "https://github.com/beshubh",
+  admin: "https://shubh-portfolio-admin.shubhamkumar7051.workers.dev/admin/",
 };
 
 function applicationFor(kind) {
@@ -364,6 +365,7 @@ export default function App() {
             <span>
               <a href={`mailto:${site.email}`}>Email</a>
               <a href={site.github} rel="me">GitHub</a>
+              <a href={site.admin}>Admin</a>
             </span>
           </footer>
         </aside>
@@ -398,6 +400,7 @@ export default function App() {
         <div className="dock-links">
           <a href={`mailto:${site.email}`}>Email</a>
           <a href={site.github} rel="me">GitHub</a>
+          <a href={site.admin}>Admin</a>
         </div>
         <div className="dock-clock" aria-label={`${clock.date}, ${clock.time}`}>
           <strong>{clock.time}</strong>

@@ -28,7 +28,48 @@ Commit and push the Markdown change to `main`, then publish the generated site w
 npm run deploy
 ```
 
-The deploy command builds the React app and writing index, then pushes only the generated site to the `gh-pages` branch. Generated files do not need to be committed to `main`.
+The deploy command is retained as a manual fallback. The normal path is the
+GitHub Actions workflow described below. Generated files do not need to be
+committed to `main`.
+
+## Publish from the browser
+
+The portfolio links to a private publisher hosted by the
+`shubh-portfolio-admin` Cloudflare Worker. GitHub OAuth restricts publishing to
+the configured `ALLOWED_GITHUB_LOGIN`, and the Worker creates the Markdown file
+on `main` through GitHub's contents API. No database or long-lived server is
+required.
+
+The Worker configuration uses `keep_vars` so a Wrangler deploy preserves the
+variables and encrypted secrets configured in the Cloudflare dashboard. Deploy
+the Worker and its `/admin/` assets with:
+
+```sh
+npm run deploy:admin
+```
+
+The Cloudflare Worker must have these text variables:
+
+- `GITHUB_CLIENT_ID`
+- `ALLOWED_GITHUB_LOGIN`
+- `REPO_OWNER`
+- `REPO_NAME`
+- `FRONTEND_ORIGIN`
+
+It must also have these encrypted secrets:
+
+- `GITHUB_CLIENT_SECRET`
+- `SESSION_SECRET`
+
+The OAuth application's callback URL is:
+
+```text
+https://shubh-portfolio-admin.shubhamkumar7051.workers.dev/auth/callback
+```
+
+Publishing pushes a Markdown file to `main`. The GitHub Actions Pages workflow
+then tests, builds, and deploys the updated portfolio automatically. In the
+repository's **Settings → Pages**, set **Source** to **GitHub Actions** once.
 
 ## Run locally
 
@@ -52,4 +93,6 @@ The build-output check confirms that the published Markdown and site configurati
 
 ## GitHub Pages
 
-Pages is served from the root of the `gh-pages` branch. The site supports both user sites and repository subpaths because all asset and content URLs are relative.
+Pages is deployed by `.github/workflows/deploy-pages.yml` after each push to
+`main`. The site supports both user sites and repository subpaths because all
+asset and content URLs are relative.

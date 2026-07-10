@@ -1,0 +1,17 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "shubh-portfolio-admin",
+  "main": "./worker/index.js",
+  "compatibility_date": "2026-07-10",
+  "keep_vars": true,
+  "secrets": {
+    "required": ["GITHUB_CLIENT_SECRET", "SESSION_SECRET"]
+  },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*", "/auth/*", "/admin/*"],
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

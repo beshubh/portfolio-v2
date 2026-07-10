@@ -9,15 +9,18 @@
     "predev": "node scripts/generate-writing-index.mjs",
     "dev": "vite --host 127.0.0.1 --port 4173",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
-    "test": "node scripts/markdown.test.mjs && node scripts/routes.test.mjs && node scripts/external-links.test.mjs && node scripts/terminal.test.mjs && node scripts/ui-contract.test.mjs",
+    "test": "node scripts/markdown.test.mjs && node scripts/routes.test.mjs && node scripts/external-links.test.mjs && node scripts/terminal.test.mjs && node scripts/ui-contract.test.mjs && npm run test:admin",
+    "test:admin": "node scripts/admin-ui.test.mjs && node scripts/admin-worker.test.mjs",
     "test:build": "npm run build && node scripts/build-output.test.mjs",
-    "deploy": "bash scripts/deploy-pages.sh"
+    "deploy": "bash scripts/deploy-pages.sh",
+    "deploy:admin": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "react": "^19.2.7",
     "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "vite": "^8.1.4"
+    "vite": "^8.1.4",
+    "wrangler": "^4.110.0"
   }
 }
