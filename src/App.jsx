@@ -18,7 +18,7 @@ const applications = [
     label: "About me",
     title: "about.md",
     detail: "01 — PROFILE",
-    accent: "#ff7a59",
+    accent: "#9ef01a",
     icon: AboutIcon,
   },
   {
@@ -26,7 +26,7 @@ const applications = [
     label: "Writing",
     title: "writing/",
     detail: "02 — NOTES",
-    accent: "#72d5c5",
+    accent: "#00c2d1",
     icon: WritingIcon,
   },
   {
@@ -34,7 +34,7 @@ const applications = [
     label: "Projects",
     title: "projects.md",
     detail: "03 — BUILDS",
-    accent: "#ffd76a",
+    accent: "#ffb000",
     icon: ProjectsIcon,
   },
 ];
@@ -74,7 +74,7 @@ function makeWindow(view, z) {
     id: idForView(view),
     view,
     title: application?.title || (view.kind === "post" ? `${view.slug}.md` : "not-found"),
-    accent: application?.accent || (view.kind === "post" ? "#f7a7d3" : "#ff7a59"),
+    accent: application?.accent || (view.kind === "post" ? "#ff5c35" : "#9ef01a"),
     minimized: false,
     maximized: false,
     z,
@@ -270,15 +270,15 @@ export default function App() {
           aria-label="Open About me"
         >
           <span className="system-brand__mark">SK</span>
-          <span>SHUBH/OS</span>
-          <span className="system-brand__version">1.0</span>
+          <span>SHUBH::OS</span>
+          <span className="system-brand__version">r2</span>
         </button>
         <div className="system-location" aria-live="polite">
           <span className="system-location__dot" aria-hidden="true" />
           {activeWindow ? windowLabel(activeWindow) : "Desktop"}
         </div>
         <div className="system-status">
-          <span className="system-status__label">PORTFOLIO / 2026</span>
+          <span className="system-status__label">NODE: PORTFOLIO // 2026</span>
           <button type="button" className="theme-toggle" onClick={toggleTheme} aria-label="Toggle color theme">
             <PaletteIcon />
           </button>
@@ -290,13 +290,13 @@ export default function App() {
         <div className="wallpaper-orbit wallpaper-orbit--one" aria-hidden="true" />
         <div className="wallpaper-orbit wallpaper-orbit--two" aria-hidden="true" />
         <div className="wallpaper-sticker" aria-hidden="true">
-          <span>SK</span>
-          <small>PORTFOLIO</small>
+          <span>&gt;_ SK</span>
+          <small>ROOT@SHUBH</small>
         </div>
         <div className="wallpaper-status" aria-hidden="true">
-          <span>STATUS</span>
-          <strong>ONLINE</strong>
-          <span>3 APPS</span>
+          <span>KERNEL</span>
+          <strong>ACTIVE</strong>
+          <span>3 PROCESSES</span>
         </div>
 
         <nav className="desktop-icons" aria-label="Portfolio applications">
@@ -364,7 +364,7 @@ export default function App() {
           aria-label="Open ShubhOS menu"
         >
           <MenuIcon />
-          <span>Menu</span>
+          <span>SYS</span>
         </button>
 
         <div className="dock-tasks" aria-label="Open windows">

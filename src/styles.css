@@ -2,24 +2,29 @@
 
 :root {
   font-family: "Space Grotesk", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  color: #201d18;
-  background: #f4c542;
+  color: #0b1510;
+  background: #111c18;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --ink: #201d18;
-  --ink-soft: #4b463d;
-  --paper: #fffaf0;
-  --paper-raised: #ffffff;
-  --paper-muted: #eee8db;
-  --desktop: #f3c641;
-  --desktop-deep: #eeb34c;
-  --line: #201d18;
-  --shadow: rgba(32, 29, 24, 0.24);
-  --muted: #766f63;
-  --coral: #ff7a59;
-  --mint: #72d5c5;
-  --yellow: #ffd76a;
-  --pink: #f7a7d3;
+  --ink: #0b1510;
+  --ink-soft: #35443c;
+  --paper: #edf1e9;
+  --paper-raised: #f8faf5;
+  --paper-muted: #d8ded7;
+  --desktop: #33453e;
+  --desktop-deep: #111c18;
+  --line: #07100c;
+  --shadow: rgba(0, 0, 0, 0.42);
+  --muted: #5f7068;
+  --signal: #9ef01a;
+  --coral: #9ef01a;
+  --mint: #00c2d1;
+  --yellow: #ffb000;
+  --pink: #ff5c35;
+  --chrome: #09100d;
+  --chrome-raised: #142019;
+  --chrome-line: #33483d;
+  --chrome-ink: #e2f0e6;
   --bar-height: 46px;
   --dock-height: 68px;
 }
@@ -49,7 +54,7 @@ button {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid #3f55e7;
+  outline: 3px solid var(--signal);
   outline-offset: 3px;
 }
 
@@ -65,16 +70,16 @@ a:focus-visible {
 }
 
 .os-shell[data-theme="night"] {
-  --ink: #f8f1e5;
-  --ink-soft: #cec6b8;
-  --paper: #25272c;
-  --paper-raised: #30333a;
-  --paper-muted: #1b1d22;
-  --desktop: #182c3b;
-  --desktop-deep: #12202c;
-  --line: #0c1015;
-  --shadow: rgba(0, 0, 0, 0.5);
-  --muted: #aaa395;
+  --ink: #dcf4e3;
+  --ink-soft: #a8c1b2;
+  --paper: #0c1411;
+  --paper-raised: #121d18;
+  --paper-muted: #07100c;
+  --desktop: #08130f;
+  --desktop-deep: #020604;
+  --line: #32483d;
+  --shadow: rgba(0, 0, 0, 0.72);
+  --muted: #738c7d;
 }
 
 .skip-link {
@@ -102,9 +107,10 @@ a:focus-visible {
   grid-template-columns: minmax(210px, 1fr) auto minmax(210px, 1fr);
   align-items: center;
   padding: 0 10px;
-  border-bottom: 2px solid var(--line);
-  background: var(--paper);
-  box-shadow: 0 3px 0 color-mix(in srgb, var(--shadow), transparent 55%);
+  border-bottom: 1px solid var(--chrome-line);
+  background: var(--chrome);
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.34);
+  color: var(--chrome-ink);
   font-family: "DM Mono", ui-monospace, monospace;
   font-size: 12px;
   letter-spacing: 0.02em;
@@ -129,7 +135,7 @@ a:focus-visible {
 }
 
 .system-brand:hover {
-  background: var(--paper-muted);
+  background: var(--chrome-raised);
 }
 
 .system-brand__mark {
@@ -137,19 +143,19 @@ a:focus-visible {
   height: 28px;
   display: grid;
   place-items: center;
-  border: 2px solid var(--line);
-  border-radius: 6px;
-  background: var(--coral);
-  color: #201d18;
-  box-shadow: 2px 2px 0 var(--line);
-  font: 700 10px/1 "Space Grotesk", sans-serif;
+  border: 1px solid var(--signal);
+  border-radius: 2px;
+  background: #0d1812;
+  color: var(--signal);
+  box-shadow: 3px 3px 0 rgba(158, 240, 26, 0.22);
+  font: 700 10px/1 "DM Mono", monospace;
 }
 
 .system-brand__version {
   padding: 2px 5px;
   border: 1px solid currentColor;
   border-radius: 99px;
-  color: var(--muted);
+  color: #8ba096;
   font-size: 9px;
 }
 
@@ -159,7 +165,7 @@ a:focus-visible {
   gap: 8px;
   min-width: 140px;
   justify-content: center;
-  color: var(--ink-soft);
+  color: #a9bbb1;
 }
 
 .system-location__dot {
@@ -167,8 +173,8 @@ a:focus-visible {
   height: 8px;
   border: 1px solid var(--line);
   border-radius: 50%;
-  background: #43c486;
-  box-shadow: 0 0 0 2px color-mix(in srgb, #43c486, transparent 68%);
+  background: var(--signal);
+  box-shadow: 0 0 0 2px rgba(158, 240, 26, 0.18), 0 0 10px rgba(158, 240, 26, 0.48);
 }
 
 .system-status {
@@ -179,7 +185,7 @@ a:focus-visible {
 }
 
 .system-status__label {
-  color: var(--muted);
+  color: #82968b;
 }
 
 .theme-toggle {
@@ -191,8 +197,8 @@ a:focus-visible {
 }
 
 .theme-toggle:hover {
-  background: var(--paper-muted);
-  transform: rotate(-7deg);
+  background: var(--chrome-raised);
+  color: var(--signal);
 }
 
 .desktop-workspace {
@@ -201,19 +207,22 @@ a:focus-visible {
   isolation: isolate;
   overflow: hidden;
   background:
-    radial-gradient(circle at 73% 27%, rgba(255, 255, 255, 0.28), transparent 28%),
+    radial-gradient(circle at 74% 22%, rgba(158, 240, 26, 0.11), transparent 24%),
+    radial-gradient(circle at 14% 88%, rgba(0, 194, 209, 0.09), transparent 25%),
     linear-gradient(145deg, var(--desktop), var(--desktop-deep));
 }
 
 .wallpaper-grid {
   position: absolute;
   inset: 0;
-  opacity: 0.46;
+  opacity: 0.64;
   background-image:
-    linear-gradient(color-mix(in srgb, var(--ink), transparent 88%) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--ink), transparent 88%) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: linear-gradient(90deg, #000, transparent 72%);
+    linear-gradient(rgba(158, 240, 26, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(158, 240, 26, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(158, 240, 26, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(158, 240, 26, 0.09) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+  mask-image: linear-gradient(90deg, #000, rgba(0, 0, 0, 0.36) 78%, transparent);
   pointer-events: none;
 }
 
@@ -221,15 +230,13 @@ a:focus-visible {
   position: absolute;
   inset: 0;
   content: "";
-  background-image: radial-gradient(color-mix(in srgb, var(--ink), transparent 80%) 1px, transparent 1.5px);
-  background-size: 7px 7px;
-  opacity: 0.35;
-  mix-blend-mode: multiply;
+  background: repeating-linear-gradient(0deg, transparent 0 4px, rgba(0, 0, 0, 0.045) 4px 5px);
+  opacity: 0.52;
 }
 
 .wallpaper-orbit {
   position: absolute;
-  border: 3px solid color-mix(in srgb, var(--ink), transparent 70%);
+  border: 1px solid rgba(158, 240, 26, 0.26);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -263,6 +270,7 @@ a:focus-visible {
   right: 21%;
   top: 8%;
   border-style: dashed;
+  box-shadow: 0 0 32px rgba(158, 240, 26, 0.08);
   animation: orbit-spin 28s linear infinite;
 }
 
@@ -278,30 +286,32 @@ a:focus-visible {
   position: absolute;
   right: 42px;
   top: 32px;
-  width: 112px;
-  height: 112px;
+  width: 176px;
+  height: 78px;
   display: grid;
   place-content: center;
-  gap: 1px;
-  border: 3px solid var(--line);
-  border-radius: 50%;
-  background: var(--pink);
-  box-shadow: 6px 6px 0 color-mix(in srgb, var(--line), transparent 10%);
-  color: #201d18;
-  text-align: center;
-  transform: rotate(8deg);
+  justify-content: start;
+  gap: 7px;
+  padding: 15px 20px;
+  border: 1px solid var(--signal);
+  border-radius: 2px;
+  background: rgba(5, 12, 9, 0.9);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.28), inset 0 0 24px rgba(158, 240, 26, 0.05);
+  color: var(--signal);
+  text-align: left;
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
 }
 
 .wallpaper-sticker span {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: -0.08em;
+  font: 700 23px/1 "DM Mono", monospace;
+  letter-spacing: -0.05em;
   line-height: 1;
 }
 
 .wallpaper-sticker small {
-  font: 500 8px/1 "DM Mono", monospace;
-  letter-spacing: 0.12em;
+  color: #9bb0a4;
+  font: 500 9px/1 "DM Mono", monospace;
+  letter-spacing: 0.18em;
 }
 
 .wallpaper-status {
@@ -312,16 +322,16 @@ a:focus-visible {
   grid-template-columns: auto auto;
   gap: 2px 18px;
   padding: 10px 13px;
-  border: 2px solid color-mix(in srgb, var(--line), transparent 30%);
-  background: color-mix(in srgb, var(--paper), transparent 52%);
-  box-shadow: 4px 4px 0 color-mix(in srgb, var(--line), transparent 48%);
+  border: 1px solid rgba(0, 194, 209, 0.55);
+  background: rgba(5, 12, 9, 0.82);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
+  color: #97aaa0;
   font: 500 9px/1.45 "DM Mono", monospace;
   letter-spacing: 0.08em;
-  transform: rotate(-2deg);
 }
 
 .wallpaper-status strong {
-  color: var(--ink);
+  color: var(--signal);
 }
 
 .wallpaper-status span:last-child {
@@ -345,18 +355,18 @@ a:focus-visible {
   gap: 5px;
   padding: 8px 6px;
   border: 2px solid transparent;
-  border-radius: 12px;
+  border-radius: 3px;
   background: transparent;
-  color: var(--ink);
+  color: var(--chrome-ink);
   cursor: pointer;
   text-align: center;
 }
 
 .desktop-icon:hover,
 .desktop-icon:focus-visible {
-  border-color: color-mix(in srgb, var(--line), transparent 30%);
-  background: color-mix(in srgb, var(--paper), transparent 52%);
-  box-shadow: 4px 4px 0 color-mix(in srgb, var(--line), transparent 55%);
+  border-color: var(--icon-accent);
+  background: rgba(5, 12, 9, 0.7);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3);
   transform: translate(-2px, -2px);
 }
 
@@ -370,30 +380,33 @@ a:focus-visible {
   height: 61px;
   display: grid;
   place-items: center;
-  border: 2px solid var(--line);
-  border-radius: 14px 14px 18px 10px;
-  background: color-mix(in srgb, var(--icon-accent), var(--paper) 35%);
-  box-shadow: 5px 5px 0 color-mix(in srgb, var(--line), transparent 14%);
+  border: 1px solid var(--icon-accent);
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--icon-accent), #08100c 78%);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.42), inset 0 0 18px rgba(255, 255, 255, 0.035);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   transition: transform 160ms ease;
 }
 
 .desktop-icon:hover .desktop-icon__art {
-  transform: rotate(-4deg) translateY(-2px);
+  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.44), 0 0 18px color-mix(in srgb, var(--icon-accent), transparent 76%);
+  transform: translateY(-2px);
 }
 
 .desktop-icon__label {
   margin-top: 4px;
   padding: 2px 5px;
   border-radius: 3px;
-  background: color-mix(in srgb, var(--desktop), transparent 15%);
-  font-size: 14px;
+  background: rgba(5, 12, 9, 0.72);
+  color: #eef7f0;
+  font: 500 13px/1.1 "DM Mono", monospace;
   font-weight: 700;
   line-height: 1.1;
 }
 
 .desktop-icon__detail {
   font: 500 8px/1.2 "DM Mono", monospace;
-  color: var(--ink-soft);
+  color: #a6baaf;
   letter-spacing: 0.05em;
 }
 
@@ -414,17 +427,21 @@ a:focus-visible {
   grid-template-rows: 44px minmax(0, 1fr);
   overflow: hidden;
   resize: both;
-  border: 2px solid var(--line);
-  border-radius: 10px;
+  border: 1px solid #030806;
+  border-radius: 3px;
   background: var(--paper);
-  box-shadow: 9px 9px 0 color-mix(in srgb, var(--line), transparent 15%), 0 20px 55px var(--shadow);
+  box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.48), 0 24px 64px var(--shadow);
   pointer-events: auto;
   transition: box-shadow 140ms ease, opacity 120ms ease;
 }
 
+.desktop-window[hidden] {
+  display: none !important;
+}
+
 .desktop-window:not(.is-active) {
-  filter: saturate(0.78);
-  box-shadow: 5px 5px 0 color-mix(in srgb, var(--line), transparent 34%), 0 12px 32px color-mix(in srgb, var(--shadow), transparent 28%);
+  filter: saturate(0.55) brightness(0.82);
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.38), 0 12px 32px color-mix(in srgb, var(--shadow), transparent 20%);
 }
 
 .desktop-window.is-maximized {
@@ -443,11 +460,11 @@ a:focus-visible {
   align-items: center;
   gap: 10px;
   padding: 0 7px 0 13px;
-  border-bottom: 2px solid var(--line);
+  border-bottom: 1px solid #030806;
   background:
-    repeating-linear-gradient(90deg, transparent 0 7px, color-mix(in srgb, var(--line), transparent 87%) 7px 8px),
-    color-mix(in srgb, var(--window-accent), var(--paper) 12%);
-  color: #201d18;
+    linear-gradient(90deg, color-mix(in srgb, var(--window-accent), #0a120e 72%), #0a120e 58%),
+    repeating-linear-gradient(90deg, transparent 0 7px, rgba(255, 255, 255, 0.04) 7px 8px);
+  color: var(--chrome-ink);
   cursor: grab;
   user-select: none;
   touch-action: none;
@@ -460,9 +477,10 @@ a:focus-visible {
 .window-titlebar__status {
   width: 11px;
   height: 11px;
-  border: 2px solid #201d18;
-  border-radius: 50%;
-  background: #fffaf0;
+  border: 1px solid var(--window-accent);
+  border-radius: 1px;
+  background: var(--window-accent);
+  box-shadow: 0 0 9px color-mix(in srgb, var(--window-accent), transparent 35%);
 }
 
 .window-titlebar__title {
@@ -484,27 +502,32 @@ a:focus-visible {
   display: grid;
   place-items: center;
   padding: 0;
-  border: 2px solid #201d18;
-  border-radius: 5px;
-  background: #fffaf0;
-  color: #201d18;
-  box-shadow: 2px 2px 0 #201d18;
+  border: 1px solid #50645a;
+  border-radius: 2px;
+  background: #101a15;
+  color: #dce9e0;
+  box-shadow: none;
   cursor: pointer;
   font: 700 16px/1 "DM Mono", monospace;
 }
 
 .window-control:hover {
-  background: #ffd76a;
-  transform: translate(-1px, -1px);
+  border-color: var(--window-accent);
+  background: color-mix(in srgb, var(--window-accent), #101a15 72%);
+  color: #ffffff;
+  transform: none;
 }
 
 .window-control:active {
-  box-shadow: none;
-  transform: translate(2px, 2px);
+  background: var(--window-accent);
+  color: #07100c;
+  transform: translateY(1px);
 }
 
 .window-control--close:hover {
-  background: #ff7a59;
+  border-color: #ff5c35;
+  background: #ff5c35;
+  color: #07100c;
 }
 
 .window-content {
@@ -515,7 +538,7 @@ a:focus-visible {
   scrollbar-color: var(--window-accent) var(--paper-muted);
   scrollbar-width: thin;
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--paper), transparent 3%), color-mix(in srgb, var(--paper-raised), transparent 5%));
+    linear-gradient(90deg, color-mix(in srgb, var(--paper), transparent 2%), color-mix(in srgb, var(--paper-raised), transparent 4%));
 }
 
 .window-content::-webkit-scrollbar {
@@ -668,7 +691,7 @@ a:focus-visible {
 .prose-document a,
 .article-body a {
   padding: 0.05em 0.28em 0.1em;
-  border-bottom: 2px solid var(--window-accent);
+  border-bottom: 1px solid var(--window-accent);
   color: var(--ink);
   background: color-mix(in srgb, var(--window-accent), transparent 84%);
   text-decoration: none;
@@ -679,7 +702,7 @@ a:focus-visible {
 .prose-document a:hover,
 .article-body a:hover {
   background: var(--window-accent);
-  color: #201d18;
+  color: #07100c;
 }
 
 .prose-document blockquote,
@@ -688,7 +711,7 @@ a:focus-visible {
   padding: 19px 22px;
   border: 2px solid var(--line);
   border-left: 8px solid var(--window-accent);
-  border-radius: 4px;
+  border-radius: 2px;
   background: var(--paper-raised);
   box-shadow: 4px 4px 0 color-mix(in srgb, var(--line), transparent 68%);
   color: var(--ink);
@@ -715,8 +738,8 @@ a:focus-visible {
   margin: 31px 0;
   padding: 20px;
   border: 2px solid var(--line);
-  border-radius: 7px;
-  background: #201d18;
+  border-radius: 2px;
+  background: #07100c;
   box-shadow: 5px 5px 0 color-mix(in srgb, var(--window-accent), var(--line) 45%);
   color: #fffaf0;
 }
@@ -736,7 +759,7 @@ a:focus-visible {
   height: auto;
   margin: 34px auto;
   border: 2px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   box-shadow: 6px 6px 0 color-mix(in srgb, var(--line), transparent 30%);
 }
 
@@ -761,7 +784,8 @@ a:focus-visible {
   display: inline-block;
   content: "→";
   margin-right: 10px;
-  color: var(--coral);
+  color: var(--signal);
+  font-family: "DM Mono", monospace;
 }
 
 .projects-document > ul {
@@ -776,7 +800,7 @@ a:focus-visible {
   margin: 0;
   padding: 18px 20px 18px 54px;
   border: 2px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--paper-raised);
   box-shadow: 4px 4px 0 color-mix(in srgb, var(--line), transparent 65%);
 }
@@ -789,12 +813,11 @@ a:focus-visible {
   height: 18px;
   display: grid;
   place-items: center;
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
   background: var(--yellow);
-  color: #201d18;
+  color: #07100c;
   content: "↗";
   font: 700 10px/1 "DM Mono", monospace;
-  transform: rotate(-4deg);
 }
 
 .projects-document > ul > li:hover {
@@ -840,7 +863,7 @@ a:focus-visible {
   gap: 15px;
   padding: 17px 15px;
   border: 2px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: var(--paper-raised);
   box-shadow: 4px 4px 0 color-mix(in srgb, var(--line), transparent 65%);
   color: var(--ink);
@@ -861,9 +884,9 @@ a:focus-visible {
   display: grid;
   place-items: center;
   border: 2px solid var(--line);
-  border-radius: 50%;
+  border-radius: 1px;
   background: var(--mint);
-  color: #201d18;
+  color: #07100c;
   font: 500 10px/1 "DM Mono", monospace;
 }
 
@@ -903,7 +926,7 @@ a:focus-visible {
   margin-bottom: 45px;
   padding: 7px 11px;
   border: 2px solid var(--line);
-  border-radius: 6px;
+  border-radius: 2px;
   background: var(--paper-raised);
   box-shadow: 3px 3px 0 color-mix(in srgb, var(--line), transparent 52%);
   color: var(--ink);
@@ -912,8 +935,8 @@ a:focus-visible {
 }
 
 .back-link:hover {
-  background: var(--pink);
-  color: #201d18;
+  background: var(--window-accent);
+  color: #07100c;
 }
 
 .article-header {
@@ -941,7 +964,7 @@ a:focus-visible {
   width: min(390px, calc(100vw - 20px));
   overflow: hidden;
   border: 2px solid var(--line);
-  border-radius: 11px;
+  border-radius: 3px;
   background: var(--paper);
   box-shadow: 9px 9px 0 color-mix(in srgb, var(--line), transparent 12%), 0 24px 60px var(--shadow);
   animation: menu-enter 160ms ease-out;
@@ -953,8 +976,8 @@ a:focus-visible {
   gap: 13px;
   padding: 18px;
   border-bottom: 2px solid var(--line);
-  background: var(--pink);
-  color: #201d18;
+  background: var(--chrome);
+  color: var(--chrome-ink);
 }
 
 .start-menu__avatar {
@@ -962,10 +985,11 @@ a:focus-visible {
   height: 48px;
   display: grid;
   place-items: center;
-  border: 2px solid #201d18;
-  border-radius: 50%;
-  background: #fffaf0;
-  box-shadow: 3px 3px 0 #201d18;
+  border: 1px solid var(--signal);
+  border-radius: 2px;
+  background: #101a15;
+  box-shadow: 3px 3px 0 rgba(158, 240, 26, 0.2);
+  color: var(--signal);
   font-weight: 700;
 }
 
@@ -992,7 +1016,7 @@ a:focus-visible {
   gap: 11px;
   padding: 10px;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   color: var(--ink);
   cursor: pointer;
@@ -1011,7 +1035,7 @@ a:focus-visible {
   display: grid;
   place-items: center;
   border: 2px solid var(--line);
-  border-radius: 8px;
+  border-radius: 2px;
   background: color-mix(in srgb, var(--menu-accent), var(--paper) 30%);
 }
 
@@ -1054,19 +1078,20 @@ a:focus-visible {
   align-items: center;
   gap: 10px;
   padding: 8px 10px;
-  border-top: 2px solid var(--line);
-  background: var(--paper);
-  box-shadow: 0 -6px 0 color-mix(in srgb, var(--shadow), transparent 78%);
+  border-top: 1px solid var(--chrome-line);
+  background: var(--chrome);
+  box-shadow: 0 -6px 0 rgba(0, 0, 0, 0.2);
+  color: var(--chrome-ink);
 }
 
 .dock-start,
 .dock-task {
   height: 48px;
-  border: 2px solid var(--line);
-  border-radius: 8px;
-  background: var(--paper-raised);
-  color: var(--ink);
-  box-shadow: 3px 3px 0 color-mix(in srgb, var(--line), transparent 24%);
+  border: 1px solid var(--chrome-line);
+  border-radius: 2px;
+  background: var(--chrome-raised);
+  color: var(--chrome-ink);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.42);
   cursor: pointer;
 }
 
@@ -1075,14 +1100,16 @@ a:focus-visible {
   align-items: center;
   gap: 8px;
   padding: 0 14px 0 10px;
-  background: var(--yellow);
-  color: #201d18;
-  font-weight: 700;
+  border-color: var(--signal);
+  background: #101a15;
+  color: var(--signal);
+  font: 700 12px/1 "DM Mono", monospace;
 }
 
 .dock-start:hover,
 .dock-start.is-open {
-  background: var(--coral);
+  background: color-mix(in srgb, var(--signal), #101a15 72%);
+  color: #eaffd7;
   transform: translateY(-2px);
 }
 
@@ -1122,12 +1149,13 @@ a:focus-visible {
 
 .dock-task:hover,
 .dock-task.is-active {
-  background: color-mix(in srgb, var(--paper-raised), var(--yellow) 28%);
+  border-color: var(--signal);
+  background: color-mix(in srgb, var(--chrome-raised), var(--signal) 10%);
   transform: translateY(-2px);
 }
 
 .dock-task.is-active {
-  box-shadow: inset 0 -4px 0 var(--coral), 3px 3px 0 color-mix(in srgb, var(--line), transparent 24%);
+  box-shadow: inset 0 -3px 0 var(--signal), 3px 3px 0 rgba(0, 0, 0, 0.42);
 }
 
 .dock-links {
@@ -1138,7 +1166,7 @@ a:focus-visible {
 }
 
 .dock-links a {
-  color: var(--ink);
+  color: var(--chrome-ink);
   text-underline-offset: 3px;
 }
 
@@ -1147,7 +1175,7 @@ a:focus-visible {
   height: 48px;
   display: grid;
   place-content: center;
-  border-left: 2px solid var(--line);
+  border-left: 1px solid var(--chrome-line);
   text-align: center;
   font-family: "DM Mono", monospace;
 }
@@ -1163,7 +1191,7 @@ a:focus-visible {
 
 .dock-clock span {
   margin-top: 3px;
-  color: var(--muted);
+  color: #80958a;
   font-size: 9px;
   text-transform: uppercase;
 }
@@ -1238,15 +1266,15 @@ a:focus-visible {
   .wallpaper-sticker {
     top: 15%;
     right: 50%;
-    width: 132px;
-    height: 132px;
-    transform: translateX(50%) rotate(7deg);
+    width: 176px;
+    height: 78px;
+    transform: translateX(50%);
   }
 
   .wallpaper-status {
     right: 50%;
     bottom: 15%;
-    transform: translateX(50%) rotate(-2deg);
+    transform: translateX(50%);
   }
 
   .desktop-icons {
@@ -1263,8 +1291,8 @@ a:focus-visible {
     max-width: none;
     max-height: none;
     resize: none;
-    border-radius: 8px;
-    box-shadow: 5px 5px 0 color-mix(in srgb, var(--line), transparent 15%);
+    border-radius: 3px;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.48);
   }
 
   .desktop-window:not(.is-active) {
@@ -1359,7 +1387,7 @@ a:focus-visible {
     width: 48px;
     justify-content: center;
     padding: 0;
-    color: transparent;
+    font-size: 0;
   }
 
   .dock-task > span {
