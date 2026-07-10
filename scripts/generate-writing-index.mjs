@@ -1,9 +1,8 @@
-import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const dist = path.join(root, "dist");
 const writings = path.join(root, "content", "writings");
 
 function parseFrontmatter(source) {
@@ -28,28 +27,15 @@ function parseFrontmatter(source) {
   );
 }
 
-await rm(dist, { recursive: true, force: true });
-await mkdir(path.join(dist, "content", "writings"), { recursive: true });
-
-for (const entry of ["index.html", "404.html", "assets"]) {
-  await cp(path.join(root, entry), path.join(dist, entry), { recursive: true });
-}
-await cp(path.join(root, "content", "pages"), path.join(dist, "content", "pages"), { recursive: true });
-await cp(path.join(root, "content", "site.json"), path.join(dist, "content", "site.json"));
-
 const posts = [];
 for (const filename of await readdir(writings)) {
   if (!filename.endsWith(".md") || filename.startsWith("_")) continue;
   const source = await readFile(path.join(writings, filename), "utf8");
   const metadata = parseFrontmatter(source);
   if (metadata.status === "draft") continue;
-  const slug = filename.replace(/\.md$/, "");
-  posts.push({ slug, ...metadata });
-  await cp(path.join(writings, filename), path.join(dist, "content", "writings", filename));
+  posts.push({ slug: filename.replace(/\.md$/, ""), ...metadata });
 }
 
 posts.sort((a, b) => String(b.date).localeCompare(String(a.date)));
-await writeFile(path.join(dist, "content", "writings", "index.json"), `${JSON.stringify(posts, null, 2)}\n`);
-await writeFile(path.join(dist, ".nojekyll"), "");
-
-console.log(`Built ${posts.length} published writing${posts.length === 1 ? "" : "s"} into dist/`);
+await writeFile(path.join(writings, "index.json"), `${JSON.stringify(posts, null, 2)}\n`);
+console.log(`Indexed ${posts.length} published writing${posts.length === 1 ? "" : "s"}.`);

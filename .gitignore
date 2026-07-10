@@ -1,4 +1,6 @@
 dist/
+node_modules/
+content/writings/index.json
 work/
 outputs/
 .DS_Store
