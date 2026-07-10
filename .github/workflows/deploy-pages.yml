@@ -36,8 +36,8 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Build
-        run: npm run build
+      - name: Build and verify output
+        run: npm run test:build
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

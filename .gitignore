@@ -1,4 +1,5 @@
 dist/
+dist-admin/
 node_modules/
 content/writings/index.json
 work/

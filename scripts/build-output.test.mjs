@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -32,6 +32,8 @@ const builtHtml = await readFile(path.join(root, "dist", "index.html"), "utf8");
 assert.match(builtHtml, /<div id="root"><\/div>/);
 assert.doesNotMatch(builtHtml, /src\/main\.jsx/);
 
-const builtAdminHtml = await readFile(path.join(root, "dist", "admin", "index.html"), "utf8");
-assert.match(builtAdminHtml, /<div id="admin-root"><\/div>/);
-assert.doesNotMatch(builtAdminHtml, /src\/admin\/main\.jsx/);
+await assert.rejects(
+  () => access(path.join(root, "dist", "admin", "index.html")),
+  { code: "ENOENT" },
+  "The public Pages artifact must not contain the Worker-only admin app",
+);

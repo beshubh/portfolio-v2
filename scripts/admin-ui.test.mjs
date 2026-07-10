@@ -1,5 +1,10 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { payloadFromDraft, slugFromTitle } from "../src/admin/draft.js";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
 assert.equal(
   slugFromTitle("You might be unaware of Celery's delayed semantics."),
@@ -24,3 +29,7 @@ assert.deepEqual(
     body: "The post body.",
   },
 );
+
+const adminApp = await readFile(path.join(root, "src", "admin", "AdminApp.jsx"), "utf8");
+assert.match(adminApp, /Committed\. GitHub Pages is deploying it now\./);
+assert.doesNotMatch(adminApp, />Published\./);

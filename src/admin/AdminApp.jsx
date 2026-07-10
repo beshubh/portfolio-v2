@@ -173,7 +173,8 @@ export function AdminApp() {
               {publishState.status === "error" ? publishState.message : null}
               {publishState.status === "published" ? (
                 <span>
-                  Published. <a href={publishState.articleUrl}>Open article ↗</a>{" "}
+                  Committed. GitHub Pages is deploying it now. {" "}
+                  <a href={publishState.articleUrl}>Open when live ↗</a>{" "}
                   <a href={publishState.commitUrl}>View commit ↗</a>
                 </span>
               ) : null}
