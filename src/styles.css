@@ -956,6 +956,342 @@ a:focus-visible {
   font: 500 11px/1 "DM Mono", monospace;
 }
 
+.window-content:has(.terminal-app) {
+  overflow: hidden;
+  background: #020705;
+}
+
+.terminal-app {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, rgba(158, 240, 26, 0.018) 3px 4px),
+    radial-gradient(circle at 80% 10%, rgba(0, 194, 209, 0.07), transparent 34%),
+    #020705;
+  color: #bcd1c1;
+  font: 400 13px/1.65 "DM Mono", ui-monospace, monospace;
+}
+
+.terminal-screen {
+  min-height: 0;
+  overflow: auto;
+  padding: 22px 24px 46px;
+  overscroll-behavior: contain;
+  scrollbar-color: #9ef01a #07100c;
+  scrollbar-width: thin;
+}
+
+.terminal-screen > * + * {
+  margin-top: 18px;
+}
+
+.terminal-command {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: #dff0e2;
+}
+
+.terminal-command span,
+.terminal-prompt label {
+  color: #9ef01a;
+  white-space: nowrap;
+}
+
+.terminal-command strong {
+  font: inherit;
+  color: #f4fff2;
+  overflow-wrap: anywhere;
+}
+
+.terminal-message {
+  padding-left: 15px;
+  border-left: 2px solid #30473a;
+  color: #94aa9b;
+}
+
+.terminal-message p {
+  margin: 0;
+}
+
+.terminal-message--error {
+  border-color: #ff5c35;
+  color: #ff9b7d;
+}
+
+.terminal-guide {
+  display: grid;
+  gap: 7px;
+  padding: 14px;
+  border: 1px solid #30473a;
+  background: rgba(8, 18, 13, 0.76);
+}
+
+.terminal-guide > div {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) 1fr;
+  gap: 18px;
+}
+
+.terminal-guide code {
+  color: #00d7e7;
+  font: inherit;
+}
+
+.terminal-guide span {
+  color: #8fa397;
+}
+
+.terminal-output-label {
+  margin: 0 0 17px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #30473a;
+  color: #00c2d1;
+  letter-spacing: 0.04em;
+}
+
+.terminal-writing {
+  padding: 16px;
+  border: 1px solid #30473a;
+  background: rgba(4, 12, 8, 0.82);
+}
+
+.terminal-writing-row {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 13px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(48, 71, 58, 0.66);
+}
+
+.terminal-writing-row > span:first-child {
+  color: #9ef01a;
+}
+
+.terminal-writing-row strong,
+.terminal-writing-row small {
+  display: block;
+}
+
+.terminal-writing-row strong {
+  color: #dff0e2;
+  font-weight: 500;
+}
+
+.terminal-writing-row small,
+.terminal-writing-row time,
+.terminal-hint {
+  color: #708578;
+}
+
+.terminal-writing-row small {
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+.terminal-writing-row time {
+  white-space: nowrap;
+}
+
+.terminal-hint {
+  margin: 16px 0 0;
+}
+
+.terminal-document {
+  padding: 18px;
+  border: 1px solid #30473a;
+  background: rgba(4, 12, 8, 0.84);
+}
+
+.terminal-article-header {
+  margin-bottom: 30px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #30473a;
+}
+
+.terminal-article-header h1 {
+  margin: 0 0 10px;
+  color: #f0f8ef;
+  font: 500 clamp(24px, 4vw, 38px)/1.2 "DM Mono", monospace;
+  letter-spacing: -0.035em;
+}
+
+.terminal-article-header time {
+  color: #708578;
+}
+
+.terminal-prose {
+  color: #b8cbbb;
+  font-size: 13px;
+  line-height: 1.78;
+}
+
+.terminal-prose > :first-child {
+  margin-top: 0;
+}
+
+.terminal-prose > :last-child {
+  margin-bottom: 0;
+}
+
+.terminal-prose h1,
+.terminal-prose h2,
+.terminal-prose h3,
+.terminal-prose strong {
+  color: #eef8ee;
+}
+
+.terminal-prose h1,
+.terminal-prose h2,
+.terminal-prose h3 {
+  font-family: "DM Mono", monospace;
+  letter-spacing: -0.03em;
+}
+
+.terminal-prose h1 {
+  margin: 0 0 24px;
+  font-size: 30px;
+}
+
+.terminal-prose h2 {
+  margin: 38px 0 15px;
+  color: #9ef01a;
+  font-size: 20px;
+}
+
+.terminal-prose h2::before {
+  content: "## ";
+  color: #52685a;
+}
+
+.terminal-prose h3 {
+  margin: 30px 0 12px;
+  color: #00c2d1;
+  font-size: 16px;
+}
+
+.terminal-prose p,
+.terminal-prose ul,
+.terminal-prose ol {
+  margin: 0 0 18px;
+}
+
+.terminal-prose ul,
+.terminal-prose ol {
+  padding-left: 23px;
+}
+
+.terminal-prose li {
+  margin-bottom: 8px;
+}
+
+.terminal-prose li::marker {
+  color: #9ef01a;
+}
+
+.terminal-prose a {
+  color: #00d7e7;
+  text-decoration-color: #00d7e7;
+  text-underline-offset: 3px;
+}
+
+.terminal-prose a:hover {
+  color: #9ef01a;
+  text-decoration-color: #9ef01a;
+}
+
+.terminal-prose blockquote {
+  margin: 25px 0;
+  padding: 13px 16px;
+  border-left: 3px solid #ffb000;
+  background: rgba(255, 176, 0, 0.055);
+  color: #d3decf;
+}
+
+.terminal-prose blockquote p {
+  margin: 0;
+}
+
+.terminal-prose code {
+  padding: 0.1em 0.32em;
+  background: #102018;
+  color: #9ef01a;
+  font: inherit;
+}
+
+.terminal-prose pre {
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid #30473a;
+  background: #000302;
+}
+
+.terminal-prose img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border: 1px solid #30473a;
+}
+
+.terminal-prompt {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) 10px 34px;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 18px;
+  border-top: 1px solid #30473a;
+  background: #07100c;
+  box-shadow: 0 -7px 22px rgba(0, 0, 0, 0.35);
+}
+
+.terminal-prompt input {
+  min-width: 0;
+  padding: 4px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f1fbef;
+  caret-color: transparent;
+  font: inherit;
+}
+
+.terminal-prompt input::placeholder {
+  color: #52685a;
+  opacity: 1;
+}
+
+.terminal-cursor {
+  width: 9px;
+  height: 17px;
+  background: #9ef01a;
+  box-shadow: 0 0 10px rgba(158, 240, 26, 0.38);
+  animation: blink 900ms step-end infinite;
+}
+
+.terminal-prompt button {
+  width: 32px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #52685a;
+  border-radius: 2px;
+  background: #102018;
+  color: #9ef01a;
+  cursor: pointer;
+  font: 700 18px/1 "DM Mono", monospace;
+}
+
+.terminal-prompt button:hover,
+.terminal-prompt button:focus-visible {
+  border-color: #9ef01a;
+  background: #172b20;
+}
+
 .start-menu {
   position: absolute;
   z-index: 9500;
@@ -1364,6 +1700,33 @@ a:focus-visible {
 
   .back-link {
     margin-bottom: 33px;
+  }
+
+  .terminal-screen {
+    padding: 17px 15px 35px;
+  }
+
+  .terminal-app {
+    font-size: 12px;
+  }
+
+  .terminal-prompt {
+    grid-template-columns: auto minmax(0, 1fr) 9px 32px;
+    gap: 7px;
+    padding: 12px;
+  }
+
+  .terminal-guide > div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .terminal-writing-row {
+    grid-template-columns: 24px minmax(0, 1fr);
+  }
+
+  .terminal-writing-row time {
+    grid-column: 2;
   }
 
   .dock {

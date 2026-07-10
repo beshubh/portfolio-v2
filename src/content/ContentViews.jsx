@@ -56,7 +56,7 @@ function MissingDocument() {
   );
 }
 
-function Markup({ html, className = "", onNavigate }) {
+export function Markup({ html, className = "", onNavigate }) {
   function handleClick(event) {
     if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const anchor = event.target.closest("a");

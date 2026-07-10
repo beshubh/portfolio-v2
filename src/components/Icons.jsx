@@ -44,6 +44,16 @@ export function ProjectsIcon({ size }) {
   );
 }
 
+export function TerminalIcon({ size }) {
+  return (
+    <SvgIcon size={size}>
+      <path d="M5 8h38v32H5V8Z" fill="#07100c" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
+      <path d="m12 18 6 6-6 6M23 31h12" stroke="#9ef01a" strokeWidth="3" strokeLinecap="square" strokeLinejoin="miter" />
+      <path d="M5 13h38" stroke="#ff5c35" strokeWidth="2.5" />
+    </SvgIcon>
+  );
+}
+
 export function MenuIcon({ size = 22 }) {
   return (
     <SvgIcon size={size}>

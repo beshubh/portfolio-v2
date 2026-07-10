@@ -2,14 +2,17 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Article, MarkdownPage, NotFound, WritingIndex } from "./content/ContentViews.jsx";
 import { DesktopIcon } from "./components/DesktopIcon.jsx";
 import { DesktopWindow } from "./components/DesktopWindow.jsx";
+import { TerminalApp } from "./components/TerminalApp.jsx";
 import {
   AboutIcon,
   ArrowIcon,
   MenuIcon,
   PaletteIcon,
   ProjectsIcon,
+  TerminalIcon,
   WritingIcon,
 } from "./components/Icons.jsx";
+import { handleExternalLinkClick } from "./lib/externalLinks.js";
 import { hrefForView, idForView, viewFromSearch } from "./lib/routes.js";
 
 const applications = [
@@ -37,6 +40,14 @@ const applications = [
     accent: "#ffb000",
     icon: ProjectsIcon,
   },
+  {
+    kind: "terminal",
+    label: "Terminal",
+    title: "portfolio.shell",
+    detail: "04 — COMMAND",
+    accent: "#ff5c35",
+    icon: TerminalIcon,
+  },
 ];
 
 const defaultSite = {
@@ -53,12 +64,13 @@ function windowLayout(view) {
   const viewportWidth = globalThis.innerWidth || 1440;
   const viewportHeight = globalThis.innerHeight || 900;
   const article = view.kind === "post";
-  const preferredWidth = article ? 920 : view.kind === "about" ? 860 : view.kind === "writing" ? 820 : 760;
-  const preferredHeight = article ? 720 : view.kind === "about" ? 660 : view.kind === "writing" ? 640 : 620;
+  const terminal = view.kind === "terminal";
+  const preferredWidth = article ? 920 : terminal ? 900 : view.kind === "about" ? 860 : view.kind === "writing" ? 820 : 760;
+  const preferredHeight = article ? 720 : terminal ? 670 : view.kind === "about" ? 660 : view.kind === "writing" ? 640 : 620;
   const width = Math.min(preferredWidth, viewportWidth - 72);
   const height = Math.min(preferredHeight, viewportHeight - 150);
-  const preferredX = article ? 210 : view.kind === "about" ? 230 : view.kind === "writing" ? 310 : 360;
-  const preferredY = article ? 72 : view.kind === "about" ? 86 : view.kind === "writing" ? 82 : 100;
+  const preferredX = article ? 210 : terminal ? 270 : view.kind === "about" ? 230 : view.kind === "writing" ? 310 : 360;
+  const preferredY = article ? 72 : terminal ? 70 : view.kind === "about" ? 86 : view.kind === "writing" ? 82 : 100;
 
   return {
     x: Math.max(24, Math.min(preferredX, viewportWidth - width - 30)),
@@ -168,6 +180,8 @@ export default function App() {
           ? "Writing"
           : activeWindow.view.kind === "projects"
             ? "Projects"
+            : activeWindow.view.kind === "terminal"
+              ? "Terminal"
             : activeWindow.title.replace(/\.md$/, "")
       : "Desktop";
     document.title = `${title} — ${site.name}`;
@@ -252,6 +266,7 @@ export default function App() {
     if (windowState.view.kind === "about") return <MarkdownPage page="about" {...common} />;
     if (windowState.view.kind === "projects") return <MarkdownPage page="projects" {...common} />;
     if (windowState.view.kind === "writing") return <WritingIndex onNavigate={openView} />;
+    if (windowState.view.kind === "terminal") return <TerminalApp onNavigate={openView} />;
     if (windowState.view.kind === "post") {
       return <Article slug={windowState.view.slug} {...common} />;
     }
@@ -259,7 +274,7 @@ export default function App() {
   }
 
   return (
-    <div className="os-shell" data-theme={theme}>
+    <div className="os-shell" data-theme={theme} onClick={handleExternalLinkClick}>
       <a className="skip-link" href="#desktop-workspace">Skip to desktop</a>
 
       <header className="system-bar">
@@ -296,7 +311,7 @@ export default function App() {
         <div className="wallpaper-status" aria-hidden="true">
           <span>KERNEL</span>
           <strong>ACTIVE</strong>
-          <span>3 PROCESSES</span>
+          <span>{applications.length} PROCESSES</span>
         </div>
 
         <nav className="desktop-icons" aria-label="Portfolio applications">

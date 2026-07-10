@@ -9,7 +9,7 @@
     "predev": "node scripts/generate-writing-index.mjs",
     "dev": "vite --host 127.0.0.1 --port 4173",
     "preview": "vite preview --host 127.0.0.1 --port 4173",
-    "test": "node scripts/markdown.test.mjs && node scripts/routes.test.mjs && node scripts/ui-contract.test.mjs",
+    "test": "node scripts/markdown.test.mjs && node scripts/routes.test.mjs && node scripts/external-links.test.mjs && node scripts/terminal.test.mjs && node scripts/ui-contract.test.mjs",
     "test:build": "npm run build && node scripts/build-output.test.mjs",
     "deploy": "bash scripts/deploy-pages.sh"
   },

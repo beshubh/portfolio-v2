@@ -1,4 +1,4 @@
-const pageViews = new Set(["about", "writing", "projects"]);
+const pageViews = new Set(["about", "writing", "projects", "terminal"]);
 
 export function viewFromSearch(search = "") {
   const params = new URLSearchParams(search);
