@@ -92,6 +92,11 @@ export function TerminalApp({ onNavigate }) {
   const [commandHistory, setCommandHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const screenRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, []);
 
   useEffect(() => {
     const screen = screenRef.current;
@@ -190,7 +195,7 @@ export function TerminalApp({ onNavigate }) {
   }
 
   return (
-    <div className="terminal-app" onClick={() => document.getElementById("portfolio-terminal-input")?.focus()}>
+    <div className="terminal-app" onClick={() => inputRef.current?.focus()}>
       <div className="terminal-screen" ref={screenRef} aria-live="polite">
         {entries.map((entry) => (
           <TerminalEntry key={entry.id} entry={entry} onNavigate={onNavigate} />
@@ -199,6 +204,7 @@ export function TerminalApp({ onNavigate }) {
       <form className="terminal-prompt" onSubmit={handleSubmit}>
         <label htmlFor="portfolio-terminal-input">visitor@shubhos:~$</label>
         <input
+          ref={inputRef}
           id="portfolio-terminal-input"
           value={input}
           onChange={(event) => setInput(event.target.value)}

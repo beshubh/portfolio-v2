@@ -33,8 +33,7 @@ function inline(value) {
   output = output.replace(/~~([^~]+)~~/g, "<s>$1</s>");
   output = output.replace(/\*([^*]+)\*/g, "<em>$1</em>");
   output = output.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, href) => {
-    const external = /^https?:\/\//.test(href);
-    return `<a href="${href}"${external ? ' target="_blank" rel="noreferrer"' : ""}>${label}</a>`;
+    return `<a href="${href}">${label}</a>`;
   });
   return output;
 }

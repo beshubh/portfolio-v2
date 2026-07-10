@@ -14,7 +14,7 @@ Fast-forward to 2020: I got my first internship as a backend engineer at [Tarzan
 I helped improve the **Django** admin for our ops and content team. I also built an AWS SNS-based pub/sub broker that decoupled the CRM backend from the API servers, improving reliability and fault isolation.
 
 
-Four months into the internship, I started looking for another opportunity—because why not? A call led me to [ClassCast](https://), where I would have full autonomy to build at scale.
+Four months into the internship, I started looking for another opportunity—because why not? A call led me to [ClassCast](https://www.linkedin.com/company/classcastedu/), where I would have full autonomy to build at scale.
 
 
 I joined as a backend intern. The CEO’s brief was direct: the existing backend was convoluted, unreliable, and needed to be rebuilt from scratch.

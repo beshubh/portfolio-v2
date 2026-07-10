@@ -1,5 +1,22 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { parseTerminalCommand } from "../src/lib/terminal.js";
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const terminalSource = await readFile(path.join(root, "src", "components", "TerminalApp.jsx"), "utf8");
+
+assert.match(
+  terminalSource,
+  /useEffect\(\(\) => \{\s*inputRef\.current\?\.focus\(\);\s*\}, \[\]\);/s,
+  "The terminal input must receive keyboard focus as soon as the terminal opens.",
+);
+assert.match(
+  terminalSource,
+  /<input\s+[^>]*ref=\{inputRef\}/s,
+  "The focus lifecycle must target the terminal input directly.",
+);
 
 assert.deepEqual(parseTerminalCommand("open about"), {
   type: "open-page",

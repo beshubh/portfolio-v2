@@ -12,7 +12,6 @@ import {
   TerminalIcon,
   WritingIcon,
 } from "./components/Icons.jsx";
-import { handleExternalLinkClick } from "./lib/externalLinks.js";
 import { hrefForView, idForView, viewFromSearch } from "./lib/routes.js";
 
 const applications = [
@@ -274,7 +273,7 @@ export default function App() {
   }
 
   return (
-    <div className="os-shell" data-theme={theme} onClick={handleExternalLinkClick}>
+    <div className="os-shell" data-theme={theme}>
       <a className="skip-link" href="#desktop-workspace">Skip to desktop</a>
 
       <header className="system-bar">
@@ -364,7 +363,7 @@ export default function App() {
             <p>© {new Date().getFullYear()} {site.name}.</p>
             <span>
               <a href={`mailto:${site.email}`}>Email</a>
-              <a href={site.github} rel="me noreferrer" target="_blank">GitHub</a>
+              <a href={site.github} rel="me">GitHub</a>
             </span>
           </footer>
         </aside>
@@ -398,7 +397,7 @@ export default function App() {
 
         <div className="dock-links">
           <a href={`mailto:${site.email}`}>Email</a>
-          <a href={site.github} rel="me noreferrer" target="_blank">GitHub</a>
+          <a href={site.github} rel="me">GitHub</a>
         </div>
         <div className="dock-clock" aria-label={`${clock.date}, ${clock.time}`}>
           <strong>{clock.time}</strong>
