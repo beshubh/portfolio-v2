@@ -7,6 +7,13 @@
   "secrets": {
     "required": ["GITHUB_CLIENT_SECRET", "SESSION_SECRET"]
   },
+  "vars": {
+    "ALLOWED_GITHUB_LOGIN": "beshubh",
+    "FRONTEND_ORIGIN": "https://beshubh.github.io",
+    "GITHUB_CLIENT_ID": "Ov23lis6XB4wGYYBwxuu",
+    "REPO_NAME": "beshubh.github.io",
+    "REPO_OWNER": "beshubh"
+  },
   "assets": {
     "directory": "./dist-admin",
     "binding": "ASSETS",
